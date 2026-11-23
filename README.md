@@ -1,121 +1,92 @@
-# NovaDevx — website
+# NovaDevx
 
-The official website for **NovaDevx**, an independent software studio building
-focused desktop tools. Its first product is **AuroraBeat 1.0.0**, a local-first
-music player for Windows.
+<p>
+  <img src="Novadev.png" width="120" alt="NovaDevx logo" />
+</p>
 
-**Live site → https://novadevx2.github.io/novadevx/**
+**Independent software studio.** NovaDevx designs and builds focused desktop
+tools — software with a clear purpose, a considered interface, and none of the
+clutter that gets in the way.
 
-![AuroraBeat 1.0.0 on Windows: the library view beside the product headline "Your music. Your way."](promotional-assets/hero-main-1920x1080.png)
+**The site → https://novadevx2.github.io/novadevx/**
 
-## Highlights
+This repository is the studio's home on the web: a small, hand-made site that
+introduces NovaDevx, shows the software it builds, and hosts the release details
+and downloads for its products.
 
-- Plain **HTML, CSS, and vanilla JavaScript** — no framework, package manager,
-  build step, external font, or runtime dependency.
-- Every path is relative, so the same files work from your filesystem, a local
-  server, or a GitHub Pages subpath without configuration.
-- Ships as a static artifact deployed by GitHub Actions.
+## The studio
 
-## Pages
+NovaDevx is small on purpose. Each project is designed, engineered, and finished
+in-house, from the first sketch to the release build, against one standard:
 
-| Page             | What's there                                                                                                     |
+- **Clarity over clutter.** Every element earns its place. If it doesn't help the
+  person using it, it doesn't belong.
+- **Details are the design.** Spacing, motion, wording, and edge cases matter as
+  much as the feature list.
+- **Local-first by default.** Software should respect your machine. Your files and
+  history stay where they belong — on your device.
+
+## What's here
+
+| Page             | Contents                                                                                                         |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `index.html`     | Homepage: the studio, AuroraBeat as featured work, application showcase, studio principles, and a downloads call to action |
-| `downloads.html` | AuroraBeat 1.0.0: release details, supported formats, download panel, and five feature previews                    |
+| `index.html`     | Homepage: the studio, featured work, an application showcase, the design principles, and a path to downloads      |
+| `downloads.html` | Release details, supported formats, the download panel, and feature previews                                      |
 
 Both pages share `css/style.css` and `js/main.js`.
 
-## AuroraBeat 1.0.0
+## Software
 
-A local-first music player for Windows x64. It reads the folders you choose,
-keeps the index on your machine, and never talks to a server.
+**AuroraBeat 1.0.0** — the studio's first release. A local-first music player for
+Windows x64 that reads the folders you choose, keeps its index on your machine,
+and never talks to a server.
 
-- Local library indexing with tags, artwork, years, and durations
+- Library indexing with tags, artwork, years, and durations
 - Eight formats: MP3, WAV, FLAC, AAC, M4A, OGG, OPUS, WMA
-- Seekable playback with shuffle, repeat, volume, and a persistent queue
-- Playlists, favorites, search, sorting, rescanning, and metadata edits
-- A 460 × 188 mini player with artwork, seek, transport, and window controls
-- Dark, light, and system themes with six accents and two densities
-- Tray controls and global media keys
-- Installer and portable builds, with WebView2 bundled offline
+- Playlists, favorites, search, sorting, and a persistent queue
+- A 460 × 188 mini player, dark and light themes, tray controls, and media keys
+- No account, no cloud library, no background network calls
 
-No account, no cloud library, no background network calls.
+Release details and the download live on the
+[downloads page](https://novadevx2.github.io/novadevx/downloads.html).
 
-## Run it locally
+The artwork across the site is genuine captures of the packaged application;
+[`promotional-assets/README.md`](promotional-assets/README.md) documents every
+asset, its source, and how the set is generated.
 
-There is nothing to install and nothing to build. Opening `index.html` directly
-works, because every path is relative.
+## How the site is built
 
-If you'd rather use a local server that mirrors how GitHub Pages serves the site:
+Plain **HTML, CSS, and vanilla JavaScript**. No framework, package manager, build
+step, external font, or runtime dependency — which means the whole site is small,
+fast, and readable as-is.
 
-```bash
-python -m http.server 8000
-```
+Every path is relative, so the files work identically from a folder on disk or
+from a hosted subpath. The pages are responsive down to phone widths, keyboard
+navigable, and honour `prefers-reduced-motion`.
 
-Then open <http://localhost:8000/> and <http://localhost:8000/downloads.html>.
-
-## Project layout
+## Layout
 
 ```text
 website/
 ├── index.html                  # homepage
-├── downloads.html              # AuroraBeat release + download
-├── Novadev.png                 # NovaDevx logo
+├── downloads.html              # release details and download
+├── Novadev.png                 # logo
 ├── css/style.css               # all styling
-├── js/main.js                  # nav, scroll reveals, small behaviour
+├── js/main.js                  # navigation and small behaviour
 ├── assets/                     # brand SVGs
-├── promotional-assets/         # AuroraBeat artwork used across both pages
-│   ├── README.md               # asset catalog, sources, regeneration notes
-│   ├── hero-main-*.png         # hero banner (1920 and 3840 wide)
-│   ├── app-showcase-*.png      # application showcase
-│   ├── download-page-*.png     # downloads page presentation
-│   ├── feature-*.png           # five feature previews (1280 and 2560 wide)
-│   ├── product-card-*.png      # square product cards (800 and 1600)
-│   ├── app-icon-*.png          # icon and icon presentations
-│   ├── _build/                 # capture + render scripts that generate the artwork
-│   └── screenshots/            # real captures of the packaged app
-└── .github/workflows/deploy.yml
+└── promotional-assets/         # product artwork used across both pages
+    ├── README.md               # catalog, sources, regeneration notes
+    ├── _build/                 # capture and render scripts
+    └── screenshots/            # real captures of the packaged app
 ```
 
-Only the files the pages reference are published. The 4K and 2× source sizes stay
-in the repository, and `_build/` plus `screenshots/` never reach the deployed
-artifact. The full artwork catalog, capture sources, and design system are
-documented in [`promotional-assets/README.md`](promotional-assets/README.md).
+## Local preview
 
-## Deploying
+Nothing to install. Opening `index.html` works, or for a local server:
 
-The site is published to GitHub Pages by `.github/workflows/deploy.yml`, which
-runs on every push to `main` and can be triggered by hand from the **Actions**
-tab.
-
-The workflow checks out the repository, copies the pages, logo, CSS, JavaScript,
-and the referenced artwork into `_site`, then publishes that directory. Because
-it copies from an explicit list rather than the whole repository, a newly added
-top-level folder needs a matching `cp` line to go live.
-
-To stand up a copy of this site:
-
-1. Push the repository to GitHub.
-2. Go to **Settings → Pages** and set **Source** to **GitHub Actions**.
-3. Push to `main`, or run the **Deploy static site to GitHub Pages** workflow.
-
-The site appears at `https://<user>.github.io/<repo>/` for a project repository,
-at `https://<user>.github.io/` for a `<user>.github.io` repository, or on a
-custom domain configured in **Settings → Pages**. Keep `.nojekyll` in place so
-Pages serves the files without Jekyll processing.
-
-## Accessibility and behaviour
-
-- Semantic landmarks, a skip link, keyboard-operable navigation, and visible
-  focus styles.
-- The mobile menu handles `Escape`, focus return, a focus loop, outside clicks,
-  and closes itself once the viewport reaches desktop width.
-- Scroll reveals use `IntersectionObserver` and are disabled under
-  `prefers-reduced-motion`. Without JavaScript, all content stays visible.
-- Images carry descriptive alt text drawn from the real screenshots; purely
-  decorative icons use empty alt text.
-- The layout responds at roughly 1080, 980, 900, 820, 640, and 400 pixels, with a
-  single-column reading flow on phones.
+```bash
+python -m http.server 8000
+```
 
 ## License
 
