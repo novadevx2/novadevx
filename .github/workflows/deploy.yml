@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p _site/promotional-assets
           cp index.html downloads.html Novadev.png .nojekyll _site/
-          cp -R css js _site/
+          cp -R css js assets _site/
           cp promotional-assets/hero-main-1920x1080.png \
              promotional-assets/app-showcase-1920x1080.png \
              promotional-assets/download-page-1920x1080.png \
