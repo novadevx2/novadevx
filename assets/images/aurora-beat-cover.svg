@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200">
+  <defs>
+    <radialGradient id="purpleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#8b7cff" stop-opacity="0.75" />
+      <stop offset="0.65" stop-color="#6d5fe0" stop-opacity="0.16" />
+      <stop offset="1" stop-color="#6d5fe0" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="blueGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#5680ff" stop-opacity="0.62" />
+      <stop offset="0.7" stop-color="#3b62d8" stop-opacity="0.1" />
+      <stop offset="1" stop-color="#3b62d8" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="tealGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#54c4ba" stop-opacity="0.24" />
+      <stop offset="1" stop-color="#54c4ba" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="ringStroke" x1="0" y1="0" x2="1200" y2="1200" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#cfc6ff" stop-opacity="0.35" />
+      <stop offset="0.55" stop-color="#8b7cff" stop-opacity="0.08" />
+      <stop offset="1" stop-color="#79a0ff" stop-opacity="0.28" />
+    </linearGradient>
+    <linearGradient id="waveStroke" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b7cff" stop-opacity="0" />
+      <stop offset="0.3" stop-color="#a99bff" stop-opacity="0.45" />
+      <stop offset="0.7" stop-color="#79a0ff" stop-opacity="0.4" />
+      <stop offset="1" stop-color="#79a0ff" stop-opacity="0" />
+    </linearGradient>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M56 0H0V56" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1" />
+    </pattern>
+    <radialGradient id="gridFade" cx="50%" cy="48%" r="58%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="0.55" stop-color="#ffffff" stop-opacity="0.45" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <mask id="gridMask">
+      <rect width="1200" height="1200" fill="url(#gridFade)" />
+    </mask>
+    <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="70" />
+    </filter>
+    <filter id="tinyBlur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="22" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1200" fill="#090b12" />
+
+  <ellipse cx="790" cy="330" rx="430" ry="380" fill="url(#purpleGlow)" opacity="0.8" filter="url(#softBlur)" />
+  <ellipse cx="330" cy="830" rx="400" ry="360" fill="url(#blueGlow)" opacity="0.75" filter="url(#softBlur)" />
+  <ellipse cx="920" cy="1010" rx="300" ry="250" fill="url(#tealGlow)" filter="url(#softBlur)" />
+
+  <g transform="rotate(-8 600 600)">
+    <rect x="-200" y="320" width="1600" height="180" fill="url(#purpleGlow)" opacity="0.2" filter="url(#softBlur)" />
+    <rect x="-200" y="720" width="1600" height="120" fill="url(#blueGlow)" opacity="0.18" filter="url(#softBlur)" />
+  </g>
+
+  <rect width="1200" height="1200" fill="url(#grid)" mask="url(#gridMask)" opacity="0.7" />
+
+  <g fill="none" stroke="url(#ringStroke)">
+    <circle cx="600" cy="548" r="150" stroke-width="1.4" />
+    <circle cx="600" cy="548" r="252" stroke-width="1.2" stroke-opacity="0.8" />
+    <circle cx="600" cy="548" r="360" stroke-width="1" stroke-opacity="0.55" stroke-dasharray="2 9" />
+    <path d="M600 188a360 360 0 0 1 306 172" stroke-width="2.4" stroke-opacity="0.9" />
+    <path d="M905 720a360 360 0 0 1-233 169" stroke-width="2" stroke-opacity="0.65" />
+  </g>
+
+  <g fill="#cfc6ff">
+    <circle cx="600" cy="188" r="4" opacity="0.8" />
+    <circle cx="906" cy="720" r="3" opacity="0.65" />
+    <circle cx="196" cy="576" r="2.5" opacity="0.55" />
+    <circle cx="974" cy="266" r="2" opacity="0.4" />
+    <circle cx="268" cy="336" r="1.8" opacity="0.4" />
+    <circle cx="722" cy="940" r="2.2" opacity="0.45" />
+  </g>
+
+  <g stroke="url(#waveStroke)" fill="none" stroke-linecap="round">
+    <path d="M0 620c140-42 220 44 340 8s220-96 350-48 260 112 510 26" stroke-width="2.2" opacity="0.55" />
+    <path d="M0 704c160 34 240-52 372-16s204 74 338 30 252-90 490-12" stroke-width="1.4" opacity="0.35" />
+    <path d="M0 788c150-28 250 46 380 18s232-72 356-28 246 66 464 14" stroke-width="1" opacity="0.24" />
+  </g>
+
+  <g fill="#ffffff" opacity="0.08">
+    <circle cx="840" cy="520" r="120" filter="url(#tinyBlur)" />
+    <circle cx="420" cy="680" r="110" filter="url(#tinyBlur)" />
+  </g>
+</svg>

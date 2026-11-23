@@ -1,0 +1,58 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare static files
+        run: |
+          mkdir -p _site/promotional-assets
+          cp index.html downloads.html Novadev.png .nojekyll _site/
+          cp -R css js _site/
+          cp promotional-assets/hero-main-1920x1080.png \
+             promotional-assets/app-showcase-1920x1080.png \
+             promotional-assets/download-page-1920x1080.png \
+             promotional-assets/app-icon-presentation-1200x1200.png \
+             promotional-assets/app-icon-1024x1024.png \
+             promotional-assets/feature-library-1280x720.png \
+             promotional-assets/feature-playback-1280x720.png \
+             promotional-assets/feature-playlists-1280x720.png \
+             promotional-assets/feature-mini-player-1280x720.png \
+             promotional-assets/feature-settings-1280x720.png \
+             promotional-assets/product-card-library-800x800.png \
+             promotional-assets/product-card-playback-800x800.png \
+             promotional-assets/product-card-playlists-800x800.png \
+             promotional-assets/product-card-settings-800x800.png \
+             _site/promotional-assets/
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
