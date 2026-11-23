@@ -94,4 +94,4 @@ Released under the [GNU Affero General Public License v3.0](LICENSE).
 
 ## Contact
 
-NovaDevx — [novadevx@proton.me](mailto:novadevx@proton.me)
+NovaDevx — [novadevx@hotmail.com](mailto:novadevx@hotmail.com)
