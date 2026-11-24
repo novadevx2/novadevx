@@ -30,7 +30,7 @@ jobs:
       - name: Prepare static files
         run: |
           mkdir -p _site/promotional-assets
-          cp index.html downloads.html Novadev.png .nojekyll _site/
+          cp index.html downloads.html Novadev.png .nojekyll AURORABEAT_1.0.0.sha256 _site/
           cp -R css js assets _site/
           cp promotional-assets/hero-main-1920x1080.png \
              promotional-assets/app-showcase-1920x1080.png \
