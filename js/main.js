@@ -107,6 +107,77 @@
     }
   }
 
+  /* Copy-to-clipboard (checksums) --------------------------------------- */
+  var copyButtons = Array.prototype.slice.call(
+    document.querySelectorAll("[data-copy-target]")
+  );
+
+  var copyText = function (text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text);
+    }
+
+    return new Promise(function (resolve, reject) {
+      var field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.top = "-1000px";
+      document.body.appendChild(field);
+      field.select();
+
+      var copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch (error) {
+        copied = false;
+      }
+
+      document.body.removeChild(field);
+      if (copied) {
+        resolve();
+      } else {
+        reject(new Error("Copy command was rejected"));
+      }
+    });
+  };
+
+  copyButtons.forEach(function (button) {
+    var target = document.getElementById(
+      button.getAttribute("data-copy-target")
+    );
+    if (!target) return;
+
+    var status = document.querySelector("[data-copy-status]");
+    var label = button.getAttribute("data-copy-label") || "Copy";
+    var timer = null;
+
+    var reset = function () {
+      button.textContent = label;
+      button.removeAttribute("data-copied");
+    };
+
+    button.addEventListener("click", function () {
+      copyText(target.textContent.trim()).then(
+        function () {
+          button.textContent = "Copied";
+          button.setAttribute("data-copied", "true");
+          if (status) {
+            status.textContent = "Checksum copied to the clipboard.";
+          }
+          window.clearTimeout(timer);
+          timer = window.setTimeout(reset, 2400);
+        },
+        function () {
+          if (status) {
+            status.textContent =
+              "Could not copy automatically — select the hash and copy it manually.";
+          }
+        }
+      );
+    });
+  });
+
   /* Scroll reveal ------------------------------------------------------- */
   var revealItems = Array.prototype.slice.call(
     document.querySelectorAll("[data-reveal]")
